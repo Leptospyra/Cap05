@@ -1,0 +1,2 @@
+public class ExemplosCap05 {
+}
