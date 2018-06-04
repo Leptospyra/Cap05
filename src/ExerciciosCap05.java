@@ -7,8 +7,68 @@ public class ExerciciosCap05 {
         //Exercicio09();
         //Exercicio10();
         //Exercicio11();
-        Exercicio12();
+        //Exercicio12();
+        //Exercicio13();
+        //System.out.println(contains("Rafae", 'l'));
     }
+
+
+    public static boolean contains(String str, char ch) {
+        boolean found = false;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                found = true;
+            }
+        }
+        return found;
+    }
+    /*Write a sentinel loop that repeatedly prompts the user to enter a number and,
+    once the number –1 is typed,
+    displays the maximum and minimum numbers that the user entered. Here is a sample dialogue:
+    Type a number (or –1 to stop): 5*/
+    private static void Exercicio13() {
+        Scanner console = new Scanner(System.in);
+        int num = -1;
+        int max = -1;
+        int min = -1;
+        //System.-1out.println("Type a number (or –1 to stop):");
+        //num = console.nextInt();
+        num = getInt13(console, "Type a number (or –1 to stop):");
+        while (num != -1){
+
+            if ( max == -1){
+                max = num;
+                min = num;
+            }
+
+            if (num > max){
+                max = num;
+            }
+
+            if (num < max){
+                min = num;
+            }
+            num = getInt13(console, "Type a number (or –1 to stop):");
+            //System.out.println("Type a number (or –1 to stop):");
+           // num = console.nextInt();
+        }
+        if ( max == -1 && min == -1){
+            max++;
+            min++;
+        }
+        System.out.printf("Maior: %s, menor: %s ", max, min);
+    }
+
+    public static int getInt13(Scanner console, String prompt){
+        System.out.println(prompt);
+        while (!console.hasNextInt()){
+            console.next();
+            System.out.print("Este não é um número inteiro, tente novamente.");
+            System.out.println(prompt);
+        }
+        return console.nextInt();
+    }
+
     /*Consider the flawed method printLetters that follows, which accepts a String as its parameter
     and attempts to print the letters of the String, separated by dashes.*/
     public static void Exercicio12() {
