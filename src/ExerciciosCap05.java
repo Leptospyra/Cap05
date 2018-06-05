@@ -10,10 +10,57 @@ public class ExerciciosCap05 {
         //Exercicio12();
         //Exercicio13();
         //System.out.println(contains("Rafae", 'l'));
+        //Exercicio24();
+        //Exercicio25();
+        Exercicio26();
+    }
+
+    private static void Exercicio26() {
+        int media = 0;
+        for (int i=1; i<=3; i++){
+            Scanner console = new Scanner(System.in);
+            media += getInt13(console, "Informe um numero inteiro #" + i );
+        }
+        System.out.println("A média é " + (1.0*media/3));
+    }
+
+    private static void Exercicio25() {
+        Scanner console = new Scanner(System.in);
+        System.out.print("Type a number: ");
+        if (console.hasNextInt()) {
+            int number = console.nextInt();
+            System.out.println("You type a integer number: " + number);
+        } else if (console.hasNextDouble()) {
+            Double token = console.nextDouble();
+            System.out.println("You type a Double number: " + token);
+        } else if (console.hasNext()) {
+            String token = console.next();
+            System.out.println("You type a invalid number: " + token);
+            System.out.println("Try again. Type a number: ");
+        }
+    }
+
+    private static void Exercicio24() {
+        Scanner console = new Scanner(System.in);
+        System.out.print("Type your age: ");
+        while (!console.hasNextInt()){
+            console.next();
+            System.out.println("Esta não é numero inteiro, tente novamente");
+            System.out.print("Type your age: ");
+        }
+        int age = console.nextInt();
+        System.out.print("Type your GPA: ");
+        while (!console.hasNextDouble()){ // repiti apenas para treinar
+            console.next(); //descarta o valor invalido
+            System.out.println("Esta não é numero válido, tente novamente"); //da a descrição do erro
+            System.out.print("Type your GPA: "); //pede o valor novamente
+        }
+        double gpa = console.nextDouble();
     }
 
 
     public static boolean contains(String str, char ch) {
+
         boolean found = false;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == ch) {
