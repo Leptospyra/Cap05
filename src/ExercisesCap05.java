@@ -1,4 +1,3 @@
-import java.text.*;
 import java.text.ParseException;
 import java.util.*;
 
@@ -16,74 +15,73 @@ public class ExercisesCap05 {
         //Exercise13();
         //Exercise14();
         //Exercise15();
-        Exercise16();
-        //Exercise17();
+        //Exercise16();
+        Exercise17();
         //Exercise18();
 
     }
 
-    private static void Exercise16() throws ParseException {
-        boolean flag = monthApart(1,2,3,4);//ficou redundante mas é melhor para entender
-        if (flag) {
-            System.out.println("A diferença é menor que 1 mes! ");
-        } else{
-            System.out.println("A diferença é menor que 1 mes! ");
-        }
+    private static void Exercise17() {
+    }
+
+    private static void Exercise16() {
+        System.out.println(monthApart(2,2,3,1));
+
 
     }
 
-    private static boolean monthApart(int mes01, int dia01, int mes02, int dia02) throws ParseException {
-        String data1 = dia01+"/"+mes01+"/"+"2018";
-        String data2 = dia02+"/"+mes02+"/"+"2018";
-        String dataHoje = "01/01/2018";
-        double numeroDiasDt01 = getDiasTranscorridos(data1, dataHoje);
-        double numeroDiasDt02 = getDiasTranscorridos(data2, dataHoje);
-        double diferenca = (numeroDiasDt01 - numeroDiasDt02);
-        if (diferenca<0){
-            diferenca = (numeroDiasDt02 - numeroDiasDt01);
-        }
-        System.out.println("O diferença em dias é de : " + diferenca);
-        if (diferenca>30){
+    public static boolean monthApart(int month1, int day1, int month2, int day2) {
+        if (Math.abs(month1 - month2) > 1) {
+            return true;
+        } else if (Math.abs(month1 - month2) == 1) {
+            if (month1 < month2 && day1 <= day2) {
+                return true;
+            } else if (month1 > month2 && day1 >= day2) {
+                return true;
+            }
+            return false;
+        } else { // month1 = month2
             return false;
         }
-        return true;
     }
-/*private static void Exercicio04(Scanner console) throws ParseException {
-        System.out.println("Informe a data de hoje (dd/MM)");
-        String dataHoje = console.next();
-        dataHoje = dataHoje + "/2018";
 
-        System.out.println("Informe a data do aniversario 1 (dd/MM)");
-        String aniversario1 = console.next();
-        aniversario1 = aniversario1 + "/2018";
-        double diasAniver1 = getDiasTranscorridos(aniversario1, dataHoje);
+    /* minha solução ficou muito complicada, a solução da net é bem mais simples
+        private static void Exercise16() throws ParseException {
+            boolean flag = monthApart(1,2,3,4);//ficou redundante mas é melhor para entender
+            if (flag) {
+                System.out.println("A diferença é menor que 1 mes! ");
+            } else{
+                System.out.println("A diferença é menor que 1 mes! ");
+            }
 
-        System.out.println("Informe a data do aniversario 2 (dd/MM)");
-        String aniversario2 = console.next();
-        aniversario2 = aniversario2 + "/2018";
-        double diasAniver2 = getDiasTranscorridos(aniversario2, dataHoje);
-
-        System.out.printf("Dias corridos que faltam para o aniversario 1 %s\n", diasAniver1);
-        System.out.printf("Dias corridos que faltam para o aniversario 2 %s\n", diasAniver2);
-
-        System.out.println();
-        if (diasAniver1 < diasAniver2){
-            System.out.println("O dia do aniversario do Aniversariante 1 está mais proximo: " + diasAniver1);
-        } else {
-            System.out.println("O dia do aniversario do Aniversariante 2 está mais proximo: " + diasAniver2);
         }
-    }
-*/
-    private static double getDiasTranscorridos(String dataFutura, String dataHoje) throws ParseException {
 
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        df.setLenient(false);
-        Date d1 = df.parse (dataHoje);
-        Date d2 = df.parse (dataFutura); // aqui pega a string que eu recebi no cabeçalho
-        long dt = (d2.getTime() - d1.getTime()) + 3600000; // 1 hora para compensar horário de verão
-        return (dt / 86400000L); // passaram-se 67111 dias
-    }
+        private static boolean monthApart(int mes01, int dia01, int mes02, int dia02) throws ParseException {
+            String data1 = dia01+"/"+mes01+"/"+"2018";
+            String data2 = dia02+"/"+mes02+"/"+"2018";
+            String dataHoje = "01/01/2018";
+            double numeroDiasDt01 = getDiasTranscorridos(data1, dataHoje);
+            double numeroDiasDt02 = getDiasTranscorridos(data2, dataHoje);
+            double diferenca = (numeroDiasDt01 - numeroDiasDt02);
+            if (diferenca<0){
+                diferenca = (numeroDiasDt02 - numeroDiasDt01);
+            }
+            System.out.println("O diferença em dias é de : " + diferenca);
+            if (diferenca>30){
+                return false;
+            }
+            return true;
+        }
+        private static double getDiasTranscorridos(String dataFutura, String dataHoje) throws ParseException {
 
+            DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
+            df.setLenient(false);
+            Date d1 = df.parse (dataHoje);
+            Date d2 = df.parse (dataFutura); // aqui pega a string que eu recebi no cabeçalho
+            long dt = (d2.getTime() - d1.getTime()) + 3600000; // 1 hora para compensar horário de verão
+            return (dt / 86400000L); // passaram-se 67111 dias
+        }
+    */
     private static void Exercise15() {
         System.out.println(hasMidpoint(10,7,4));
     }
